@@ -22,8 +22,9 @@
     flex-flow: row;
     justify-content: space-between;
     padding: 0 10px;
-    background: rgba(253, 253, 253, 0.26);
+    background: linear-gradient(to bottom right, rgba(245, 247, 236, 0.034), rgba(187, 255, 249, 0.479));
     align-items: center;
+    margin: 0 auto;
 }
 
 .box button {
