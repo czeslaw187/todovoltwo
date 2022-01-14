@@ -3,12 +3,14 @@ import todoStyle from '../styles/Todo.module.css'
 
 function Layout({children}) {
     return ( 
-        <div className={style.container}>
-            <div className={style.main}>
+        <div className={styles.container}>
+            <div className={styles.main}>
                 {children}
             </div>
         </div>
      );
 }
+
+
 
 export default Layout;

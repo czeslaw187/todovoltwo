@@ -5,8 +5,8 @@ import React,{useState} from 'react'
 function MyApp({ Component, pageProps }) {
   const [glob, setGlob] = useState([])
   return (
-    <Layout stat={glob} setStat={setGlob}>
-      <Component {...pageProps} />
+    <Layout>
+      <Component {...pageProps} stat={glob} setStat={setGlob}/>
     </Layout>
   )
 }
