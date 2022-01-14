@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  background: rgba(145, 130, 130, 0.158)
 }
 
 .main {
@@ -67,6 +68,7 @@
 
 .grid {
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
