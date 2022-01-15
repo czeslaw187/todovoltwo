@@ -3,12 +3,12 @@ import todoStyle from '../styles/Todo.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row, Col, Button, Container} from 'reactstrap'
 
-function Foot() {
+function Foot({left}) {
     return ( 
         <Container>
             <Row className={todoStyle.box}>
                 <Col xs="3">
-                    items left
+                   {left} items left
                 </Col>
                 <Col xs="6">
                     <Button color="secondary" outline>All</Button>
@@ -16,7 +16,7 @@ function Foot() {
                     <Button color="secondary" outline>Complete</Button>
                 </Col>
                 <Col>
-                    <Button color="secondary" outline>Clear All</Button>
+                    <Button outline>Clear All</Button>
                 </Col>
             </Row>
         </Container>

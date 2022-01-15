@@ -11,7 +11,7 @@ function Home({stat, setStat, resJson}) {
   useEffect(()=>{
     setStat(resJson)
   })
-  console.log(stat)
+  console.log(stat.lenght)
   return (
     <Container className={styles.grid}>
         <Row>
@@ -27,7 +27,7 @@ function Home({stat, setStat, resJson}) {
           </div>
         </Row>
         <Row>
-          <Foot />
+          <Foot left={stat.length}/>
         </Row>
     </Container>
   )
