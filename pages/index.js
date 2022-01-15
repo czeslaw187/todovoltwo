@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col, Button} from 'reactstrap'
-import checkStyle from '../styles/Checkbox.module.css'
+import {Container, Row, Col} from 'reactstrap'
+import Record from '../component/Record';
+import Foot from '../component/Footer.js'
+
 
 function Home({stat, setStat, resJson}) {
   useEffect(()=>{
@@ -11,27 +13,23 @@ function Home({stat, setStat, resJson}) {
   })
   console.log(stat)
   return (
-    <div className={styles.container}>
-        <input type="text" className={todoStyle.input}/>
-    <Container className={todoStyle.input}>
-      {stat.map((el)=>(
-        <Row className={todoStyle.box}>
-          <Col xs="1" className={todoStyle.mauto}>
-            <div className={checkStyle.round}>
-                <input type="checkbox" id={el.id}/>
-                <label htmlFor={el.id}></label>
-            </div>
-          </Col>
-          <Col xs="10"  className={todoStyle.paragh}>
-            <p>{el.content}</p>
-          </Col>
-          <Col xs="1">
-            <Button>X</Button>
+    <Container className={styles.grid}>
+        <Row>
+          <Col>
+            <input type="text" className={todoStyle.input}/>
           </Col>
         </Row>
-    ))}
+        <Row>
+          <div>
+              {stat.map((el)=>(
+                <Record record={el} />
+            ))}
+          </div>
+        </Row>
+        <Row>
+          <Foot />
+        </Row>
     </Container>
-    </div>
   )
 }
 
