@@ -1,12 +1,18 @@
 import Layout from '../component/Layout'
 import '../styles/globals.css'
-import React,{useState} from 'react'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import reducer from '../lib/reducer'
+
+const store = createStore(reducer)
+
 
 function MyApp({ Component, pageProps }) {
-  const [glob, setGlob] = useState([])
   return (
     <Layout>
-      <Component {...pageProps} stat={glob} setStat={setGlob}/>
+      <Provider store={store}>
+        <Component {...pageProps}/>
+      </Provider>
     </Layout>
   )
 }

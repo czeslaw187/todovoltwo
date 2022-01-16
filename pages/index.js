@@ -5,18 +5,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col} from 'reactstrap'
 import Record from '../component/Record';
 import Foot from '../component/Footer.js'
+import {useSelector, useDispatch} from 'react-redux'
 
 
-function Home({stat, setStat, resJson}) {
+function Home({resJson}) {
   const [inp, setInp] = useState('')
+  const dispatch = useDispatch()
+  let stat = useSelector(state=>state.todos)
   useEffect(()=>{
-    setStat(resJson)
-  })
+    dispatch({type:"ADD_ITEM", payload:resJson})
+  }, [])
+  
+  console.log(stat)
   return (
     <Container className={styles.grid}>
         <Row>
           <Col>
-            <form onSubmit={(e)=>{handleSubmit(e, inp).then(resp=>setStat(stat.concat({id: resp.id, content: inp, isActive: false})))}}>
+            <form onSubmit={(e)=>{handleSubmit(e, inp).then(resp=>{const sender={id: resp.id, content: inp, isActive: false} ;dispatch({action:"ADD_ITEM", payload:sender})})}}>
               <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}}/>
             </form>
           </Col>
@@ -41,7 +46,7 @@ export async function getStaticProps() {
     const resJson = await result.json()
     return {
       props: {resJson}
-    }
+    }    
   } catch(e) {
     console.log(e.message)
   }
