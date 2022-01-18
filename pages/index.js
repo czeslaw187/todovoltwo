@@ -6,16 +6,15 @@ import {Container, Row, Col} from 'reactstrap'
 import Record from '../component/Record';
 import Foot from '../component/Footer.js'
 import {useSelector, useDispatch} from 'react-redux'
+import {connect} from 'react-redux'
+import * as actionCreators from '../lib/actions.js'
 
-
-function Home({resJson}) {
+function Home({loadTodo, changeTodo}) {
   const [inp, setInp] = useState('')
-  const dispatch = useDispatch()
-  let stat = useSelector(state=>state.todos)
   useEffect(()=>{
-    dispatch({type:"ADD_ITEM", payload:resJson})
+    loadTodo()
   }, [])
-  
+  const stat = useSelector(state=>state.todos)
   console.log(stat)
   return (
     <Container className={styles.grid}>
@@ -40,17 +39,17 @@ function Home({resJson}) {
   )
 }
 
-export async function getStaticProps() {
-  try {
-    const result = await fetch('http://localhost:3000/api/getAll')
-    const resJson = await result.json()
-    return {
-      props: {resJson}
-    }    
-  } catch(e) {
-    console.log(e.message)
-  }
-}
+// export async function getServerSideProps() {
+//   try {
+//     const result = await fetch('http://localhost:3000/api/getAll')
+//     const resJson = await result.json()
+//     return {
+//       props: {resJson}
+//     }    
+//   } catch(e) {
+//     console.log(e.message)
+//   }
+// }
 
 export async function handleSubmit(e, input) {
   e.preventDefault()
@@ -60,10 +59,15 @@ export async function handleSubmit(e, input) {
       body: JSON.stringify({data: input, active: false})
     })
     const resJson = await result.json()
+    dispatch({type:'ADD_ITEM', payload:resJson})
     return resJson
   } catch(e) {
     console.log(e.message)
   }
 }
 
-export default Home
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps, actionCreators)(Home)
