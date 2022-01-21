@@ -9,15 +9,12 @@ import {connect} from 'react-redux'
 import * as actionCreators from '../lib/actions.js'
 
 function Home(props) {
-  console.log(props)
   const [inp, setInp] = useState('')
   let stat = props.todos
   stat = stat.length > 0 ? stat : []
   useEffect(()=>{
     props.loadData()
   }, [])
-  
-  console.log(stat,'index')
   return (
     <Container className={styles.grid}>
         <Row>
@@ -30,7 +27,7 @@ function Home(props) {
         <Row>
           <div>
               {stat.map((el)=>(
-                <Record key={el.id} record={el} />
+                <Record key={el.id} record={el} rd={props.removeData}/>
             ))}
           </div>
         </Row>
@@ -41,7 +38,6 @@ function Home(props) {
   )
 }
 
-
 function mapStateToProps(state) {
   return {todos: state.todos}
 }
@@ -49,7 +45,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     insertData: (data)=>{dispatch(actionCreators.insertTodo(data))},
-    loadData: ()=>{dispatch(actionCreators.loadTodo())}
+    loadData: ()=>{dispatch(actionCreators.loadTodo())},
+    removeData: (id)=>{dispatch(actionCreators.removeTodo(id))}
   }
 }
 

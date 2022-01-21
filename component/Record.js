@@ -3,8 +3,16 @@ import todoStyle from '../styles/Todo.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button} from 'reactstrap'
 import checkStyle from '../styles/Checkbox.module.css'
+import { useEffect, useState } from 'react';
 
-function Record({record}) {
+function Record({record, rd}) {
+    const [del,setDel] = useState(false)
+    useEffect(()=>{
+        
+        if (del) {
+            rd(record.id)
+        }
+    },[del])
     return ( 
         <Container>
             <Row className={todoStyle.box}>
@@ -16,11 +24,12 @@ function Record({record}) {
                     <p className={todoStyle.paragh}>{record.content}</p> 
                 </Col>
                 <Col xs="1" >
-                    <Button close />
+                    <Button close onClick={()=>{setDel(true)}} />
                 </Col>
             </Row>
         </Container>
      );
 }
+
 
 export default Record;
