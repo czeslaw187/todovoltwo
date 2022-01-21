@@ -5,22 +5,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col} from 'reactstrap'
 import Record from '../component/Record';
 import Foot from '../component/Footer.js'
-import {useSelector, useDispatch} from 'react-redux'
 import {connect} from 'react-redux'
 import * as actionCreators from '../lib/actions.js'
 
-function Home({loadTodo, changeTodo}) {
+function Home(props) {
+  console.log(props)
   const [inp, setInp] = useState('')
+  let stat = props.todos
+  stat = stat.length > 0 ? stat : []
   useEffect(()=>{
-    loadTodo()
+    props.loadData()
   }, [])
-  const stat = useSelector(state=>state.todos)
-  console.log(stat)
+  
+  console.log(stat,'index')
   return (
     <Container className={styles.grid}>
         <Row>
           <Col>
-            <form onSubmit={(e)=>{handleSubmit(e, inp).then(resp=>{const sender={id: resp.id, content: inp, isActive: false} ;dispatch({action:"ADD_ITEM", payload:sender})})}}>
+            <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp)}}>
               <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}}/>
             </form>
           </Col>
@@ -28,7 +30,7 @@ function Home({loadTodo, changeTodo}) {
         <Row>
           <div>
               {stat.map((el)=>(
-                <Record record={el} />
+                <Record key={el.id} record={el} />
             ))}
           </div>
         </Row>
@@ -39,35 +41,16 @@ function Home({loadTodo, changeTodo}) {
   )
 }
 
-// export async function getServerSideProps() {
-//   try {
-//     const result = await fetch('http://localhost:3000/api/getAll')
-//     const resJson = await result.json()
-//     return {
-//       props: {resJson}
-//     }    
-//   } catch(e) {
-//     console.log(e.message)
-//   }
-// }
 
-export async function handleSubmit(e, input) {
-  e.preventDefault()
-  try {
-    const result = await fetch('http://localhost:3000/api/insertTodo', {
-      method: 'POST',
-      body: JSON.stringify({data: input, active: false})
-    })
-    const resJson = await result.json()
-    dispatch({type:'ADD_ITEM', payload:resJson})
-    return resJson
-  } catch(e) {
-    console.log(e.message)
+function mapStateToProps(state) {
+  return {todos: state.todos}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    insertData: (data)=>{dispatch(actionCreators.insertTodo(data))},
+    loadData: ()=>{dispatch(actionCreators.loadTodo())}
   }
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
-export default connect(mapStateToProps, actionCreators)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

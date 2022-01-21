@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 import reducer from '../lib/reducer'
 import thunk from 'redux-thunk'
 
-const store = createStore(reducer, applyMiddleware(thunk))
+export const store = createStore(reducer, applyMiddleware(thunk))
 
 
 function MyApp({ Component, pageProps }) {
