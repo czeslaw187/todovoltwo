@@ -17,11 +17,11 @@ function Record({record, rd}) {
         <Container>
             <Row className={todoStyle.box}>
                 <Col xs="1" className={checkStyle.round}>
-                    <input type="checkbox" id={record.id} onChange={()=>{rd.changeAct(record.id, !record.isActive); setAct(!record.isActive)}} checked={act}/>
+                    <input type="checkbox" id={record.id} checked={act} onChange={()=>{rd.changeAct(record.id, !record.isActive); setAct(!act)}}/>
                     <label htmlFor={record.id}></label>                       
                 </Col>
-                <Col xs="10">
-                    <p className={todoStyle.paragh}>{record.content}</p> 
+                <Col xs="10" className={todoStyle.paragh}>
+                    <p className={!act ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
                 </Col>
                 <Col xs="1" >
                     <Button close onClick={()=>{setDel(true)}} />
