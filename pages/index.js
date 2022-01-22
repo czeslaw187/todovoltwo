@@ -32,7 +32,7 @@ function Home(props) {
           </div>
         </Row>
         <Row>
-          <Foot left={stat.length}/>
+          <Foot left={stat.length} rd={props}/>
         </Row>
     </Container>
   )
@@ -47,7 +47,8 @@ function mapDispatchToProps(dispatch) {
     insertData: (data)=>{dispatch(actionCreators.insertTodo(data))},
     loadData: ()=>{dispatch(actionCreators.loadTodo())},
     removeData: (id)=>{dispatch(actionCreators.removeTodo(id))},
-    changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))}
+    changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))},
+    removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())}
   }
 }
 
