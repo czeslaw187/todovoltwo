@@ -32,7 +32,7 @@ function Home(props) {
           </div>
         </Row>
         <Row>
-          {stat.length > 0 ? <Foot left={stat.length} rd={props} clearInp={setInp}/> : null}
+          {(stat) || (stat.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp}/> : null}
         </Row>
     </Container>
   )
@@ -48,7 +48,10 @@ function mapDispatchToProps(dispatch) {
     loadData: ()=>{dispatch(actionCreators.loadTodo())},
     removeData: (id)=>{dispatch(actionCreators.removeTodo(id))},
     changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))},
-    removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())}
+    removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())},
+    getActiveData: ()=>{dispatch(actionCreators.filterActiveTodo())},
+    clearData: ()=>{dispatch({type: 'CLEAR_ALL'})},
+    getCompleteData: ()=>{dispatch(actionCreators.filterCompleteTodo())}
   }
 }
 
