@@ -3,7 +3,7 @@ import todoStyle from '../styles/Todo.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row, Col, Button, Container} from 'reactstrap'
 
-function Foot({left, rd}) {
+function Foot({left, rd, clearInp}) {
     return ( 
         <Container>
             <Row className={todoStyle.box}>
@@ -16,7 +16,7 @@ function Foot({left, rd}) {
                     <Button color="secondary" outline>Complete</Button>
                 </Col>
                 <Col>
-                    <Button outline onClick={()=>{rd.removeAllData()}}>Clear All</Button>
+                    <Button outline onClick={()=>{rd.removeAllData(); clearInp('')}}>Clear All</Button>
                 </Col>
             </Row>
         </Container>

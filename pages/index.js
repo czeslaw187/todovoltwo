@@ -19,8 +19,8 @@ function Home(props) {
     <Container className={styles.grid}>
         <Row>
           <Col>
-            <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp)}}>
-              <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}}/>
+            <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp); setInp('')}}>
+              <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp}/>
             </form>
           </Col>
         </Row>
@@ -32,7 +32,7 @@ function Home(props) {
           </div>
         </Row>
         <Row>
-          {stat.length > 0 ? <Foot left={stat.length} rd={props} /> : null}
+          {stat.length > 0 ? <Foot left={stat.length} rd={props} clearInp={setInp}/> : null}
         </Row>
     </Container>
   )
