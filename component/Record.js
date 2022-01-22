@@ -7,20 +7,20 @@ import { useEffect, useState } from 'react';
 
 function Record({record, rd}) {
     const [del,setDel] = useState(false)
+    const [act,setAct] = useState(record.isActive)
     useEffect(()=>{
-        
         if (del) {
-            rd(record.id)
+            rd.removeData(record.id)
         }
     },[del])
     return ( 
         <Container>
             <Row className={todoStyle.box}>
                 <Col xs="1" className={checkStyle.round}>
-                    <input type="checkbox" id={record.id}/>
+                    <input type="checkbox" id={record.id} onChange={()=>{rd.changeAct(record.id, !record.isActive); setAct(!record.isActive)}} checked={act}/>
                     <label htmlFor={record.id}></label>                       
                 </Col>
-                <Col xs="10" >
+                <Col xs="10">
                     <p className={todoStyle.paragh}>{record.content}</p> 
                 </Col>
                 <Col xs="1" >

@@ -27,7 +27,7 @@ function Home(props) {
         <Row>
           <div>
               {stat.map((el)=>(
-                <Record key={el.id} record={el} rd={props.removeData}/>
+                <Record key={el.id} record={el} rd={props}/>
             ))}
           </div>
         </Row>
@@ -46,7 +46,8 @@ function mapDispatchToProps(dispatch) {
   return {
     insertData: (data)=>{dispatch(actionCreators.insertTodo(data))},
     loadData: ()=>{dispatch(actionCreators.loadTodo())},
-    removeData: (id)=>{dispatch(actionCreators.removeTodo(id))}
+    removeData: (id)=>{dispatch(actionCreators.removeTodo(id))},
+    changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))}
   }
 }
 
