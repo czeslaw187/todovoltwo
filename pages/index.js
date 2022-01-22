@@ -32,7 +32,7 @@ function Home(props) {
           </div>
         </Row>
         <Row>
-          <Foot left={stat.length} rd={props}/>
+          {stat.length > 0 ? <Foot left={stat.length} rd={props} /> : null}
         </Row>
     </Container>
   )
