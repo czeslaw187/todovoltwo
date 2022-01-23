@@ -17,7 +17,7 @@ function Record({record, rd}) {
         <Container>
             <Row className={todoStyle.box}>
                 <Col xs="1" className={checkStyle.round}>
-                    <input type="checkbox" id={record.id} checked={act} onChange={()=>{rd.changeAct(record.id, !record.isActive); setAct(!act)}}/>
+                    <input type="checkbox" id={record.id} checked={act} onChange={()=>{rd.changeAct(record.id, !record.isActive); setAct(!record.isActive)}}/>
                     <label htmlFor={record.id}></label>                       
                 </Col>
                 <Col xs="10" className={todoStyle.paragh}>

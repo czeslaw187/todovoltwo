@@ -13,7 +13,7 @@ function Foot({left, rd, clearInp}) {
                 <Col xs="6">
                     <Button color="secondary" outline onClick={()=>{rd.getAll()}}>All</Button>
                     <Button color="secondary" outline onClick={()=>{rd.getActiveData()}}>Active</Button>
-                    <Button color="secondary" outline onClick={()=>{rd.getCompleteData()}}>Complete</Button>
+                    <Button color="secondary" outline onClick={()=>{rd.getCompleteData()}}>Completed</Button>
                 </Col>
                 <Col>
                     <Button outline onClick={()=>{rd.removeAllData(); clearInp('')}}>Clear All</Button>

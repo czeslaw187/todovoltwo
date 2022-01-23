@@ -11,6 +11,7 @@ import * as actionCreators from '../lib/actions.js'
 function Home(props) {
   const [inp, setInp] = useState('')
   let stat = props.todos
+  let statCp = props.todosCp
   stat = stat.length > 0 ? stat : []
   useEffect(()=>{
     props.loadData()
@@ -20,7 +21,7 @@ function Home(props) {
         <Row>
           <Col>
             <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp); setInp('')}}>
-              <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp}/>
+              <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
             </form>
           </Col>
         </Row>
@@ -32,14 +33,17 @@ function Home(props) {
           </div>
         </Row>
         <Row>
-          {stat.length > 0 ? <Foot left={stat.length} rd={props} clearInp={setInp} /> : null}
+          {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} /> : null}
         </Row>
     </Container>
   )
 }
 
 function mapStateToProps(state) {
-  return {todos: state.todos}
+  return {
+    todos: state.todos,
+    todosCp: state.todosCp
+  }
 }
 
 function mapDispatchToProps(dispatch) {
