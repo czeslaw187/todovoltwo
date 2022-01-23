@@ -51,7 +51,8 @@ function mapDispatchToProps(dispatch) {
     removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())},
     getActiveData: ()=>{dispatch(actionCreators.filterActiveTodo())},
     clearData: ()=>{dispatch({type: 'CLEAR_ALL'})},
-    getCompleteData: ()=>{dispatch(actionCreators.filterCompleteTodo())}
+    getCompleteData: ()=>{dispatch(actionCreators.filterCompleteTodo())},
+    getAll: ()=>{dispatch(actionCreators.getAllTodos())}
   }
 }
 

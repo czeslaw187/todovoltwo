@@ -11,7 +11,7 @@ function Foot({left, rd, clearInp}) {
                    {left} items left
                 </Col>
                 <Col xs="6">
-                    <Button color="secondary" outline onClick={()=>{rd.clearData(); rd.loadData()}}>All</Button>
+                    <Button color="secondary" outline onClick={()=>{rd.getAll()}}>All</Button>
                     <Button color="secondary" outline onClick={()=>{rd.getActiveData()}}>Active</Button>
                     <Button color="secondary" outline onClick={()=>{rd.getCompleteData()}}>Complete</Button>
                 </Col>
