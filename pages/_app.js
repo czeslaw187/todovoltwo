@@ -16,7 +16,7 @@ export default function MyApp({
   return (
     <Layout>
       <Provider store={store}>
-        <SessionProvider session={session} refetchInterval={5 * 60}>
+        <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
           <Component {...pageProps} />
         </SessionProvider>
       </Provider>
