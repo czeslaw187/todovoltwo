@@ -14,13 +14,13 @@ export default function MyApp({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <Layout>
-      <Provider store={store}>
-        <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
+    <Provider store={store}>
+      <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
+        <Layout>
           <Component {...pageProps} />
-        </SessionProvider>
-      </Provider>
-    </Layout>
+        </Layout>
+      </SessionProvider>
+    </Provider>
   )
 }
 
