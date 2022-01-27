@@ -4,7 +4,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row, Col, Button, Container} from 'reactstrap'
 
-function Foot({left, rd, clearInp}) {
+function Foot({left, rd, clearInp, session}) {
     return ( 
         <Container>
             <Row className={todoStyle.box}>
@@ -17,7 +17,7 @@ function Foot({left, rd, clearInp}) {
                     <Button color="secondary" outline onClick={()=>{rd.getCompleteData()}}>Completed</Button>
                 </Col>
                 <Col>
-                    <Button outline onClick={()=>{rd.removeAllData(); clearInp('')}}>Clear All</Button>
+                    <Button outline onClick={()=>{rd.removeAllData(session.user.email); clearInp('')}}>Clear All</Button>
                 </Col>
             </Row>
         </Container>

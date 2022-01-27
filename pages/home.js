@@ -44,7 +44,7 @@ function Home(props) {
               ))}
         </div>
         <div className='row'>
-          {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} /> : null}
+          {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
         </div>
     </div>
   )
@@ -66,7 +66,7 @@ function mapDispatchToProps(dispatch) {
     loadData: (mySession)=>{dispatch(actionCreators.loadTodo(mySession))},
     removeData: (id, userEmail)=>{dispatch(actionCreators.removeTodo(id, userEmail))},
     changeAct: (id,act,userEmail)=>{dispatch(actionCreators.changeActive(id,act,userEmail))},
-    removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())},
+    removeAllData: (userEmail)=>{dispatch(actionCreators.removeAllTodo(userEmail))},
     getActiveData: ()=>{dispatch(actionCreators.filterActiveTodo())},
     clearData: ()=>{dispatch({type: 'CLEAR_ALL'})},
     getCompleteData: ()=>{dispatch(actionCreators.filterCompleteTodo())},
