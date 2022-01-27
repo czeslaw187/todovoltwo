@@ -7,7 +7,7 @@ import Record from '../component/Record';
 import Foot from '../component/Footer.js'
 import {connect} from 'react-redux'
 import * as actionCreators from '../lib/actions.js'
-import {signIn, useSession} from 'next-auth/react'
+import {useSession} from 'next-auth/react'
 
 function Home(props) {
   const router = useRouter()
