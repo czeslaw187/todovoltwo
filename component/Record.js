@@ -4,13 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button} from 'reactstrap'
 import checkStyle from '../styles/Checkbox.module.css'
 import { useEffect, useState } from 'react';
+import {useSession} from 'next-auth/react'
 
-function Record({record, rd}) {
+function Record({record, rd, session}) {
+    // const {data: session} = useSession()
     const [del,setDel] = useState(false)
     const [act,setAct] = useState(record.isActive)
     useEffect(()=>{
         if (del) {
-            rd.removeData(record.id)
+            rd.removeData(record.id, session.user.email)
         }
     },[del])
     return ( 

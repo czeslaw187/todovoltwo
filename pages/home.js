@@ -20,13 +20,15 @@ function Home(props) {
   useEffect(()=>{
     if (!session) {
       router.push('/')
-    } else {
+    } 
+  },[session])
+
+  useEffect(()=>{
+    if (session) {
       props.loadData(session)
     }
-  },[session])
-  // useEffect(()=>{
-    
-  // },[])
+  },[])
+
   return (
     <div className='container-fluid mt-5'>
         <div className='row'>
@@ -38,7 +40,7 @@ function Home(props) {
         </div>
         <div className='row'>
           {stat.map((el)=>(
-                  <Record key={el.id} record={el} rd={props}/>
+                  <Record key={el.id} record={el} rd={props} session={session}/>
               ))}
         </div>
         <div className='row'>
@@ -62,7 +64,7 @@ function mapDispatchToProps(dispatch) {
   return {
     insertData: (todoInput, userEmail)=>{dispatch(actionCreators.insertTodo(todoInput, userEmail))},
     loadData: (mySession)=>{dispatch(actionCreators.loadTodo(mySession))},
-    removeData: (id)=>{dispatch(actionCreators.removeTodo(id))},
+    removeData: (id, userEmail)=>{dispatch(actionCreators.removeTodo(id, userEmail))},
     changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))},
     removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())},
     getActiveData: ()=>{dispatch(actionCreators.filterActiveTodo())},
