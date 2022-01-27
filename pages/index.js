@@ -7,12 +7,12 @@ import styles from '../styles/Home.module.css'
 
 function Login() {
     const router = useRouter()
-    const {data: session, status} = useSession()
+    const {data: session} = useSession()
     useEffect(()=>{
         if (session) {
             router.push('/home')
         }
-    },[session, status])
+    },[session])
     return ( 
         <Container className={styles.main}>
             <Row>
