@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { sql_query } from '../../lib/db'
+import { sql_query } from '../../lib/db.js'
 
 export default async function(req, res) {
     const {id, isActive, email} = req.body
