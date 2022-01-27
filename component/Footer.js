@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row, Col, Button, Container} from 'reactstrap'
 
