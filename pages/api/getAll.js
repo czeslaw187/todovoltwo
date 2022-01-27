@@ -7,7 +7,7 @@ export default async function getAll(req, res) {
         dbName = dbName[0]
     try {
         await sql_query(`
-            CREATE TABLE IF NOT EXISTS `+dbName+` (
+            CREATE TABLE IF NOT EXISTS ${dbName} (
                 id int not null auto_increment,
                 content varchar(255) not null,
                 isActive boolean not null,
@@ -15,7 +15,7 @@ export default async function getAll(req, res) {
             )
         `,)
         const response = await sql_query(`
-            SELECT * FROM `+dbName+`
+            SELECT * FROM ${dbName}
         `,)
         return res.json(response)
     } catch(e) {

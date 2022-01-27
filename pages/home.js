@@ -27,12 +27,11 @@ function Home(props) {
   // useEffect(()=>{
     
   // },[])
-  console.log(session)
   return (
     <div className='container-fluid mt-5'>
         <div className='row'>
           <div className='col d-flex justify-content-center'>
-            <form className="form-control-group" onSubmit={(e)=>{e.preventDefault(); props.insertData(inp); setInp('')}}>
+            <form className="form-control-group" onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.user.email); setInp('')}}>
               <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
             </form>
           </div>
@@ -61,7 +60,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    insertData: (data)=>{dispatch(actionCreators.insertTodo(data))},
+    insertData: (todoInput, userEmail)=>{dispatch(actionCreators.insertTodo(todoInput, userEmail))},
     loadData: (mySession)=>{dispatch(actionCreators.loadTodo(mySession))},
     removeData: (id)=>{dispatch(actionCreators.removeTodo(id))},
     changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))},
