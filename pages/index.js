@@ -7,18 +7,18 @@ import styles from '../styles/Home.module.css'
 
 function Login() {
     const router = useRouter()
-    const {data: session} = useSession()
+    const {data: session, status} = useSession()
     useEffect(()=>{
         if (session) {
             router.push('/home')
         }
-    },[session])
-
+    },[session, status])
+    console.log(status)
     return ( 
         <Container className={styles.main}>
             <Row>
                 <Col>
-                    <Button color="primary" onClick={()=>signIn('google')}>Sign In</Button>
+                    <h1 className={styles.titleHeading}>to do...</h1>
                 </Col>
             </Row>
         </Container>

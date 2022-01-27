@@ -114,3 +114,9 @@
     flex-direction: column;
   }
 }
+
+.titleHeading {
+  font-size: 10rem;
+  color: rgb(255, 92, 92);
+  opacity: 0.5
+}

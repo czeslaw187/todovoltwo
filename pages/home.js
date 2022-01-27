@@ -11,44 +11,41 @@ import {signIn, useSession} from 'next-auth/react'
 
 function Home(props) {
   const router = useRouter()
-  const {data: session} = useSession()
+  const {data: session, status} = useSession()
   const [inp, setInp] = useState('')
   let stat = props.todos
   let statCp = props.todosCp
   stat = stat.length > 0 ? stat : []
-
+    
   useEffect(()=>{
     if (!session) {
       router.push('/')
     } 
-  },[session])
-
-  useEffect(()=>{
     if (session) {
       props.loadData(session)
     }
-  },[])
-
-  return (
-    <div className='container-fluid mt-5'>
-        <div className='row'>
-          <div className='col d-flex justify-content-center'>
-            <form className="form-control-group" onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.user.email); setInp('')}}>
-              <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
-            </form>
+  },[session])
+  
+  
+    return (
+      <div className='container-fluid mt-5'>
+          <div className='row'>
+            <div className='col d-flex justify-content-center'>
+              <form className="form-control-group" onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.user.email); setInp('')}}>
+                <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
+              </form>
+            </div>
           </div>
-        </div>
-        <div className='row'>
-          {stat.map((el)=>(
-                  <Record key={el.id} record={el} rd={props} session={session}/>
-              ))}
-        </div>
-        <div className='row'>
-          {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
-        </div>
-    </div>
-  )
-        
+          <div className='row'>
+            {stat.map((el)=>(
+                    <Record key={el.id} record={el} rd={props} session={session}/>
+                ))}
+          </div>
+          <div className='row'>
+            {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
+          </div>
+      </div>
+    )      
     
   
 }
