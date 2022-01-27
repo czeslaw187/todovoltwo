@@ -16,15 +16,14 @@ function Home(props) {
   let stat = props.todos
   let statCp = props.todosCp
   stat = stat.length > 0 ? stat : []
-    const loader = props.loadData(session)
   useEffect(()=>{
     if (!session) {
       router.push('/')
     } 
     if (session) {
-      loader(session)
+      props.loadData(session)
     }
-  },[session, loader])
+  },[session, props.loadData])
   
   
     return (
