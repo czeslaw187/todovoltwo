@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button} from 'reactstrap'
-import {useSession, signIn} from 'next-auth/react'
+import {useSession} from 'next-auth/react'
 import {useRouter} from 'next/router'
 import { useEffect } from 'react';
 import styles from '../styles/Home.module.css'
