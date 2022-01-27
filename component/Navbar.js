@@ -16,7 +16,7 @@ function Navbar() {
                     <a className='navbar-brand' href="#">Navbar</a>
                     <ul className='navbar-nav ml-auto'>
                         <li className='nav-item'>
-                            <a className='nav-link' href="#" onClick={()=>signOut()}>{session ? 'Sign Out' : null}</a>
+                            <a className='nav-link' href="#" onClick={()=>signOut('google')}>{session ? 'Sign Out' : null}</a>
                         </li>
                     </ul>
                 </div>

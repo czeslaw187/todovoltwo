@@ -65,7 +65,7 @@ function mapDispatchToProps(dispatch) {
     insertData: (todoInput, userEmail)=>{dispatch(actionCreators.insertTodo(todoInput, userEmail))},
     loadData: (mySession)=>{dispatch(actionCreators.loadTodo(mySession))},
     removeData: (id, userEmail)=>{dispatch(actionCreators.removeTodo(id, userEmail))},
-    changeAct: (id,act)=>{dispatch(actionCreators.changeActive(id,act))},
+    changeAct: (id,act,userEmail)=>{dispatch(actionCreators.changeActive(id,act,userEmail))},
     removeAllData: ()=>{dispatch(actionCreators.removeAllTodo())},
     getActiveData: ()=>{dispatch(actionCreators.filterActiveTodo())},
     clearData: ()=>{dispatch({type: 'CLEAR_ALL'})},

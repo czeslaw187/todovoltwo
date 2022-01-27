@@ -18,7 +18,7 @@ function Login() {
         <Container className={styles.main}>
             <Row>
                 <Col>
-                    <Button color="primary" onClick={()=>signIn()}>Sign In</Button>
+                    <Button color="primary" onClick={()=>signIn('google')}>Sign In</Button>
                 </Col>
             </Row>
         </Container>
