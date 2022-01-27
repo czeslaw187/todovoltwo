@@ -13,7 +13,6 @@ function Login() {
             router.push('/home')
         }
     },[session, status])
-    console.log(status)
     return ( 
         <Container className={styles.main}>
             <Row>
