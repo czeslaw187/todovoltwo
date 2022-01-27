@@ -12,7 +12,7 @@ function Login() {
         if (session) {
             router.push('/home')
         }
-    },[session])
+    },[session, router])
     return ( 
         <Container className={styles.main}>
             <Row>
