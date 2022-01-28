@@ -1,10 +1,10 @@
 import Layout from '../component/Layout'
-import '../styles/globals.css'
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from '../lib/reducer'
 import thunk from 'redux-thunk'
 import {SessionProvider} from 'next-auth/react'
+import '../styles/application.scss'
 
 export const store = createStore(reducer, applyMiddleware(thunk))
 

@@ -1,45 +1,32 @@
 import navStyle from '../styles/Nav.module.css'
 import Link from 'next/link'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink, Nav} from 'reactstrap'
+import {useEffect} from 'react'
 import {useSession, signOut, signIn} from 'next-auth/react'
 // 07914253609 
 function NavBar() {
     const {data: session} = useSession()
+    useEffect(() => {
+        if (typeof document !== undefined) {
+          require('bootstrap/dist/js/bootstrap')         
+        }
+    }, [])
     return ( 
-        <Navbar color='ligh' expand='md' light>
-            <NavbarBrand  className={navStyle.brand} href='#'>
-                ToDo
-            </NavbarBrand>
-            <NavbarToggler onClick={function noRefCheck(){}}/>
-            <Collapse navbar>
-                <Nav className='ml-auto' navbar>
-                    <NavItem>
-                        {session ? <NavLink href="#" onClick={()=>signOut()}>Sign out</NavLink> : null}
-                    </NavItem>
-                    <NavItem>
-                        {!session ? <NavLink href="#" onClick={()=>signIn()}>Sign in</NavLink> : null}
-                    </NavItem>
-                </Nav>
-            </Collapse>
-        </Navbar>
-
-        // <nav className="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">
-        //     <div className='container-fluid'> 
-        //         <a className={navStyle.brand} href="#">ToDo</a>               
-        //         <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#myNavbar'>
-        //             <span className='navbar-toggler-icon' ></span>
-        //         </button>
-        //         <div className='collapse navbar-collapse justify-content-end' id='myNavbar'>
-                    
-        //             <ul className='navbar-nav ml-auto'>
-        //                 <li className='nav-item'>
-        //                     {session ? <a className='nav-link' href="#" onClick={()=>signOut()}>Sign out</a> : <a className='nav-link' href="#" onClick={()=>signIn()}>Sign in</a>}
-        //                 </li>
-        //             </ul>
-        //         </div>
-        //     </div>
-        // </nav>
+        
+        <nav className="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">
+            <div className='container-fluid'> 
+                <a className={navStyle.brand} href="#">ToDo</a>               
+                <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#myNavbar'>
+                    <span className='navbar-toggler-icon' ></span>
+                </button>
+                <div className='collapse navbar-collapse justify-content-end' id='myNavbar'>
+                    <ul className='navbar-nav ml-auto'>
+                        <li className='nav-item d-flex justify-content-end my-2'>
+                            {session ? <a className='nav-link' href="#" onClick={()=>signOut()}>Sign out</a> : <a className='nav-link' href="#" onClick={()=>signIn()}>Sign in</a>}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     );
 }
 
