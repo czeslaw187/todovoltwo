@@ -13,7 +13,7 @@ function Navbar() {
                     <span className='navbar-toggler-icon' ></span>
                 </button>
                 <div className='collapse navbar-collapse justify-content-between' id='myNavbar'>
-                    <a className='navbar-brand' href="#">Navbar</a>
+                    <a className={navStyle.brand} href="#">ToDo</a>
                     <ul className='navbar-nav ml-auto'>
                         <li className='nav-item'>
                             {session ? <a className='nav-link' href="#" onClick={()=>signOut()}>Sign out</a> : <a className='nav-link' href="#" onClick={()=>signIn()}>Sign in</a>}
