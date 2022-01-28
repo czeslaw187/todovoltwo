@@ -15,7 +15,10 @@ function NavBar() {
             <Collapse navbar>
                 <Nav className='me-auto' navbar>
                     <NavItem>
-                        {session ? <NavLink href="#" onClick={()=>signOut()}>Sign out</NavLink> : <NavLink href="#" onClick={()=>signIn()}>Sign in</NavLink>}
+                        {session ? <NavLink href="#" onClick={()=>signOut()}>Sign out</NavLink> : null}
+                    </NavItem>
+                    <NavItem>
+                        {!session ? <NavLink href="#" onClick={()=>signIn()}>Sign in</NavLink> : null}
                     </NavItem>
                 </Nav>
             </Collapse>
