@@ -19,6 +19,7 @@ function Navbar() {
                         <li className='nav-item'>
                             {session ? <a className='nav-link' href="#" onClick={()=>signOut()}>Sign out</a> : <a className='nav-link' href="#" onClick={()=>signIn()}>Sign in</a>}
                         </li>
+                        <li className='nav-item'>navigation</li>
                     </ul>
                 </div>
             </div>
