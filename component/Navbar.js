@@ -13,7 +13,7 @@ function NavBar() {
             </NavbarBrand>
             <NavbarToggler onClick={function noRefCheck(){}}/>
             <Collapse navbar>
-                <Nav className='me-auto' navbar>
+                <Nav className='ml-auto' navbar>
                     <NavItem>
                         {session ? <NavLink href="#" onClick={()=>signOut()}>Sign out</NavLink> : null}
                     </NavItem>
