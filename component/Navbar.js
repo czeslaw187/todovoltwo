@@ -12,13 +12,13 @@ function NavBar() {
                 ToDo
             </NavbarBrand>
             <NavbarToggler onClick={function noRefCheck(){}}/>
-            <Collapse navbar/>
+            <Collapse navbar>
                 <Nav className='me-auto' navbar>
                     <NavItem>
                         {session ? <NavLink href="#" onClick={()=>signOut()}>Sign out</NavLink> : <NavLink href="#" onClick={()=>signIn()}>Sign in</NavLink>}
                     </NavItem>
                 </Nav>
-            <Collapse/>
+            </Collapse>
         </Navbar>
 
         // <nav className="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">
