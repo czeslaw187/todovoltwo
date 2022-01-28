@@ -1,11 +1,11 @@
 import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
-import Navbar from '../component/Navbar.js'
+import NavBar from '../component/Navbar.js'
 
 function Layout({children}) {
     return ( 
         <div>
-            <Navbar />
+            <NavBar />
             <div className={styles.container}>
                 {children}
             </div>

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink, Nav} from 'reactstrap'
 import {useSession, signOut, signIn} from 'next-auth/react'
 // 07914253609 
-function Navbar() {
+function NavBar() {
     const {data: session} = useSession()
     return ( 
         <Navbar color='ligh' expand='md' light>
@@ -39,4 +39,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default NavBar;
