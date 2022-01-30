@@ -1,7 +1,5 @@
 import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col, Button} from 'reactstrap'
 import checkStyle from '../styles/Checkbox.module.css'
 import { useEffect, useState } from 'react';
 
@@ -14,20 +12,18 @@ function Record({record, rd, session}) {
         }
     },[del])
     return ( 
-        <Container>
-            <Row className={todoStyle.box}>
-                <Col xs="1" className={checkStyle.round}>
-                    <input type="checkbox" id={record.id} checked={act} onChange={()=>{rd.changeAct(record.id, !record.isActive, session.user.email); setAct(!record.isActive)}}/>
-                    <label htmlFor={record.id}></label>                       
-                </Col>
-                <Col xs="10" className={todoStyle.paragh}>
+        <div className={todoStyle.box}>
+            <div className={checkStyle.round}>
+                <input type="checkbox" id={record.id} checked={act} onChange={()=>{rd.changeAct(record.id, !record.isActive, session.user.email); setAct(!record.isActive)}}/>
+                <label htmlFor={record.id}></label>    
+                <div className={todoStyle.paragh}>
                     <p className={!act ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
-                </Col>
-                <Col xs="1" >
-                    <Button close onClick={()=>{setDel(true)}} />
-                </Col>
-            </Row>
-        </Container>
+                </div>                   
+            </div>            
+            <div>
+                <button onClick={()=>{setDel(true)}}>X</button>
+            </div>
+        </div>
      );
 }
 

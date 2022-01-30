@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import {useRouter} from 'next/router'
 import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
-import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import Record from '../component/Record';
 import Foot from '../component/Footer.js'
 import {connect} from 'react-redux'
@@ -27,21 +26,17 @@ function Home(props) {
   
   
     return (
-      <div className='container-fluid mt-5'>
-          <div className='row'>
-            <div className='col d-flex justify-content-center'>
-              <form className="form-control-group" onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.user.email); setInp('')}}>
-                <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
-              </form>
-            </div>
-          </div>
-          <div className='row'>
-            {stat.map((el)=>(
+      <div className={styles.main}>
+          <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.user.email); setInp('')}}>
+            <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
+          </form>
+          <div>
+          {stat.map((el)=>(
                     <Record key={el.id} record={el} rd={props} session={session}/>
                 ))}
           </div>
-          <div className='row'>
-            {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
+          <div>
+           {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
           </div>
       </div>
     )      

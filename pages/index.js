@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col} from 'reactstrap'
 import {useSession} from 'next-auth/react'
 import {useRouter} from 'next/router'
 import { useEffect } from 'react';
@@ -14,13 +12,11 @@ function Login() {
         }
     },[session, router])
     return ( 
-        <Container className={styles.main}>
-            <Row>
-                <Col>
-                    <h1 className={styles.titleHeading}>to do...</h1>
-                </Col>
-            </Row>
-        </Container>
+        <div className={styles.main}>
+            <div>
+                <h1 className={styles.titleHeading}>to do...</h1>
+            </div>
+        </div>
      );
 }
 
