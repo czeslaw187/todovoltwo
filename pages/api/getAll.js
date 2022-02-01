@@ -1,13 +1,14 @@
 import {sql_query} from '../../lib/db.js'
 
 export default async function getAll(req, res) {
-        const {name, image, email} = req.body.session.user
+        const {email, image, name} = req.body.session.user
+        console.log(email)
     try {
         let userData = await sql_query(`
-            SELECT * FROM users WHERE email = '${email}'
+            SELECT * FROM users WHERE email = "${email}"
         `)
-        console.log(userData[0].email, 'getall')
-        if (!userData[0].email) {
+        console.log(userData, 'getall')
+        if (userData.length <= 0) {
             await sql_query(`
                 INSERT INTO users (name, email) VALUES ('${name}', '${email}')
             `)
