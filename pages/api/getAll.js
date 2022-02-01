@@ -1,27 +1,26 @@
 import {sql_query} from '../../lib/db.js'
 
 export default async function getAll(req, res) {
-        const {user, expiration} = req.body.session
-        let dbName = user.email
-        dbName = dbName.split('@')
-        dbName = dbName[0]
+        const {name, image, email} = req.body.session.user
     try {
-        await sql_query(`
-            CREATE TABLE IF NOT EXISTS ${dbName} (
-                id int not null auto_increment,
-                content varchar(255) not null,
-                isActive boolean not null,
-                primary key (id)
-            )
-        `,)
-        const response = await sql_query(`
-            SELECT * FROM ${dbName}
-        `,)
-        return res.json(response)
+        let userData = await sql_query(`
+            SELECT * FROM users WHERE email = '${email}'
+        `)
+        console.log(userData[0].email, 'getall')
+        if (!userData[0].email) {
+            await sql_query(`
+                INSERT INTO users (name, email) VALUES ('${name}', '${email}')
+            `)
+            let newUser = await sql_query(`
+                SELECT * FROM users WHERE email = '${email}'
+            `)    
+            res.json(newUser)       
+        } else {
+            res.json(userData)
+        }        
     } catch(e) {
         res.json({
-            message: e.message, 
-            resp: dbName 
+            message: e.message
         })
     }
 }

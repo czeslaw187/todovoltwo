@@ -22,7 +22,7 @@ function Home(props) {
     if (session) {
       props.loadData(session)
     }
-  },[session, props.loadData])
+  },[])
   
   
     return (
