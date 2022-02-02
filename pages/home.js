@@ -15,7 +15,7 @@ function Home(props) {
   console.log(props.todos, 'props todo')
   let stat = props.todos
   let statCp = props.todosCp
-  stat = stat.length > 0 ? stat : []
+  statCp = statCp.length > 0 ? statCp : []
   useEffect(()=>{
     if (!session) {
       router.push('/')
@@ -31,7 +31,7 @@ function Home(props) {
             <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
           </form>
           <div>
-          {stat.map((el)=>(
+          {statCp.map((el)=>(
                     <Record key={el.id} record={el} rd={props} session={session}/>
                 ))}
           </div>

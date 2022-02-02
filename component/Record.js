@@ -4,6 +4,7 @@ import checkStyle from '../styles/Checkbox.module.css'
 import { useEffect, useState } from 'react';
 
 function Record({record, rd, session}) {
+    console.log(record, 'record')
     const [del,setDel] = useState(false)
     const [act,setAct] = useState(record.isActive)
     useEffect(()=>{

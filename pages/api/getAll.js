@@ -14,7 +14,7 @@ export default async function getAll(req, res) {
         }
         
         let newUser = await sql_query(`
-            SELECT todos.todo_id, todos.content, todos.isActive FROM todos LEFT JOIN users ON users.email = todos.email WHERE users.email = '${email}'
+            SELECT todos.todo_id, todos.content, todos.isActive, todos.email FROM todos LEFT JOIN users ON users.email = todos.email WHERE users.email = '${email}'
             `)    
         res.json(newUser)
 

@@ -13,7 +13,7 @@ function Foot({left, rd, clearInp, session}) {
                 <button role="button" onClick={()=>{rd.getCompleteData()}}>Completed</button>
             </div>
             <div>
-                <button onClick={()=>{rd.removeAllData(session.user.email); clearInp('')}}>Clear All</button>
+                <button onClick={()=>{rd.removeAllData(session.session.user.email); clearInp('')}}>Clear All</button>
             </div>
         </div>
      );

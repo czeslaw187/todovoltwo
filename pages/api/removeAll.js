@@ -3,11 +3,9 @@ import {sql_query} from '../../lib/db.js'
 
 export default async function removeAll(req, res) {
     const {email} = req.body
-    let dbName = email.split('@')
-    dbName = dbName[0]
     try {
         const result = await sql_query(`
-            DELETE FROM ${dbName}
+            DELETE FROM todos WHERE email = '${email}'
         `)
         res.json(result)
     } catch(e) {
