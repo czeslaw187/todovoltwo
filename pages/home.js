@@ -12,6 +12,7 @@ function Home(props) {
   const router = useRouter()
   const {data: session, status} = useSession()
   const [inp, setInp] = useState('')
+  console.log(props.todos, 'props todo')
   let stat = props.todos
   let statCp = props.todosCp
   stat = stat.length > 0 ? stat : []

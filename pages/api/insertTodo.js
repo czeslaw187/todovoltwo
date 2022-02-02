@@ -8,6 +8,6 @@ export default async function insertTodo(req, res) {
         `)
         return res.json(result)
     } catch(e) {
-        res.json({message: e.message, rest:[content, email]})
+        res.json({message: e.message})
     }
 }

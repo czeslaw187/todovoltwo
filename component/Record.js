@@ -8,13 +8,13 @@ function Record({record, rd, session}) {
     const [act,setAct] = useState(record.isActive)
     useEffect(()=>{
         if (del) {
-            rd.removeData(record.id, session.user.email)
+            rd.removeData(record.todo_id, session.session.user.email)
         }
     },[del])
     return ( 
         <div className={todoStyle.box}>
             <div className={checkStyle.round}>
-                <input type="checkbox" id={record.id} checked={act} onChange={()=>{rd.changeAct(record.id, !record.isActive, session.user.email); setAct(!record.isActive)}}/>
+                <input type="checkbox" id={record.todo_id} checked={act} onChange={()=>{rd.changeAct(record.todo_id, !record.isActive, session.session.user.email); setAct(!record.isActive)}}/>
                 <label htmlFor={record.id}></label>    
                 <div className={todoStyle.paragh}>
                     <p className={!act ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
