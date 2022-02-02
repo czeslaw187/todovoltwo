@@ -5,11 +5,6 @@ import {useSession, signOut, signIn} from 'next-auth/react'
 // 07914253609 
 function NavBar() {
     const {data: session} = useSession()
-    useEffect(() => {
-        if (typeof document !== undefined) {
-          require('bootstrap/dist/js/bootstrap')         
-        }
-    }, [])
     return ( 
         
         <nav className="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-light">
