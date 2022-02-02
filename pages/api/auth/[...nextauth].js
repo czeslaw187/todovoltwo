@@ -17,11 +17,11 @@ export default NextAuth({
     },
     
     callbacks: {        
-        session: async (session, token) => {
+        session: async (session, token, user) => {
           if (!session?.user || !token?.account) {
             return session
           }
-          
+          session.user = user.user
           session.user.id = token.account.id
           session.accessToken = token.account.accessToken
       

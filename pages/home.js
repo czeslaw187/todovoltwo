@@ -24,10 +24,9 @@ function Home(props) {
     }
   },[])
   
-  
     return (
       <div className={styles.main}>
-          <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.user.email); setInp('')}}>
+          <form onSubmit={(e)=>{e.preventDefault(); props.insertData(inp, session.session.user.email); setInp('')}}>
             <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
           </form>
           <div>
