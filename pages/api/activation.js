@@ -3,14 +3,12 @@ import { sql_query } from '../../lib/db.js'
 
 export default async function activate(req, res) {
     const {id, isActive, email} = req.body
-    let dbName = email.split('@')
-    dbName = dbName[0]
     try {
         const result = await sql_query(`
-            UPDATE ${dbName}
-            SET isActive=${isActive}
-            WHERE id=${id}
-        `,[isActive, id])
+            UPDATE todos
+            SET todos.isActive=${isActive}
+            WHERE todos.todo_id=${id} AND todos.email = '${email}'
+        `)
         return res.json(result)
     } catch(e) {
         res.json({message: e.message})

@@ -4,9 +4,7 @@ import checkStyle from '../styles/Checkbox.module.css'
 import { useEffect, useState } from 'react';
 
 function Record({record, rd, session}) {
-    console.log(record, 'record')
-    const [del,setDel] = useState(false)
-    const [act,setAct] = useState(record.isActive)
+    const [del,setDel] = useState(0)
     useEffect(()=>{
         if (del) {
             rd.removeData(record.todo_id, session.session.user.email)
@@ -15,10 +13,10 @@ function Record({record, rd, session}) {
     return ( 
         <div className={todoStyle.box}>
             <div className={checkStyle.round}>
-                <input type="checkbox" id={record.todo_id} checked={act} onChange={()=>{rd.changeAct(record.todo_id, !record.isActive, session.session.user.email); setAct(!record.isActive)}}/>
-                <label htmlFor={record.id}></label>    
+                <input type="checkbox" id={record.todo_id} checked={record.isActive} onChange={()=>{rd.changeAct(record.todo_id, !record.isActive, session.session.user.email)}}/>
+                <label htmlFor={record.todo_id}></label>    
                 <div className={todoStyle.paragh}>
-                    <p className={!act ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
+                    <p className={!record.isActive ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
                 </div>                   
             </div>            
             <div>

@@ -12,10 +12,9 @@ function Home(props) {
   const router = useRouter()
   const {data: session, status} = useSession()
   const [inp, setInp] = useState('')
-  console.log(props.todos, 'props todo')
   let stat = props.todos
   let statCp = props.todosCp
-  statCp = statCp.length > 0 ? statCp : []
+  stat = stat.length > 0 ? stat : []
   useEffect(()=>{
     if (!session) {
       router.push('/')
@@ -31,7 +30,7 @@ function Home(props) {
             <input type="text" className={todoStyle.input} onChange={(e)=>{setInp(e.target.value)}} value={inp} placeholder="What need to be done?"/>
           </form>
           <div>
-          {statCp.map((el)=>(
+          {stat.map((el)=>(
                     <Record key={el.id} record={el} rd={props} session={session}/>
                 ))}
           </div>
