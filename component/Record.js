@@ -20,7 +20,7 @@ function Record({record, rd, session}) {
                 </div>                   
             </div>            
             <div>
-                <button onClick={()=>{setDel(true)}}>X</button>
+                <button className='text-white font-extrabold text-3xl md:text-5xl' onClick={()=>{setDel(true)}}>X</button>
             </div>
         </div>
      );

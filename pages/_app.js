@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 import reducer from '../lib/reducer'
 import thunk from 'redux-thunk'
 import {SessionProvider} from 'next-auth/react'
+import '../styles/globals.css'
 
 export const store = createStore(reducer, applyMiddleware(thunk))
 
