@@ -16,7 +16,10 @@ function Home(props) {
   useEffect(()=>{
     if (!session) {
       router.push('/')
-    } 
+    }    
+  },[])
+
+  useEffect(()=>{
     if (session) {
       props.loadData(session)
     }
