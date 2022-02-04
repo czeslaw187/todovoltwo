@@ -6,9 +6,9 @@ export default async function activate(req, res) {
     try {
         const result = await sql_query(`
             UPDATE todos
-            SET todos.isActive=${isActive}
-            WHERE todos.todo_id=${id} AND todos.email = '${email}'
-        `)
+            SET todos.isActive=?
+            WHERE todos.todo_id=? AND todos.email=?
+        `,[isActive, id, email])
         return res.json(result)
     } catch(e) {
         res.json({message: e.message})
