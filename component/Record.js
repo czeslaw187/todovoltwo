@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
 import checkStyle from '../styles/Checkbox.module.css'
 import { useEffect, useState } from 'react';
@@ -11,17 +10,17 @@ function Record({record, rd, session}) {
         }
     },[del])
     return ( 
-        <div className={todoStyle.box}>
+        <div className='flex flex-row align-middle justify-between bg-lime-100 rounded-md mx-auto w-full h-14 mb-1'>
             <div className={checkStyle.round}>
                 <input type="checkbox" id={record.todo_id} checked={record.isActive} onChange={()=>{rd.changeAct(record.todo_id, !record.isActive, session.session.user.email)}}/>
-                <label htmlFor={record.todo_id}></label>    
-                <div className={todoStyle.paragh}>
-                    <p className={!record.isActive ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
-                </div>                   
+                <label className='mr-4 ml-1' htmlFor={record.todo_id}></label>    
+                <p className={!record.isActive ? todoStyle.paragh : todoStyle.disabled}>{record.content}</p> 
+
+                               
             </div>            
-            <div>
-                <button className='text-white font-extrabold text-3xl md:text-5xl' onClick={()=>{setDel(true)}}>X</button>
-            </div>
+            <div className='opacity-0 hover:opacity-100 w-full flex justify-end'>
+                <button className='text-gray-400 ml-auto text-xl mr-2' onClick={()=>{setDel(true)}}>X</button>
+            </div>  
         </div>
      );
 }

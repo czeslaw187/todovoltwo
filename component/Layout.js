@@ -1,12 +1,12 @@
 import styles from '../styles/Home.module.css'
 import todoStyle from '../styles/Todo.module.css'
-import NavBar from '../component/Navbar.js'
+import NavBar from './Navbar.js'
 
 function Layout({children}) {
     return ( 
         <div>
             <NavBar />
-            <div className={styles.container}>
+            <div className='h-screen'>
                 {children}
             </div>
         </div>        

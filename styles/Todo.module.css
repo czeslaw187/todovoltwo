@@ -33,18 +33,14 @@
     flex-flow: row;
     justify-content: flex-start;
     align-content: center;
-    margin: 0 1rem;
-    font-size: small;;
+    font-size: small;
+    margin: 0 10px
 }
 
 .disabled, .disabled > * {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0, 1rem;
     text-decoration: line-through;
-    color:rgba(192, 192, 192, 0.397)
+    color: lightgrey;
+    margin: 0 10px;
 }
 
 .mauto {
