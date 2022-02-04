@@ -12,9 +12,9 @@ function Login() {
         }
     },[session, router])
     return ( 
-        <div className={styles.main}>
-            <div>
-                <h1 className={styles.titleHeading}>to do...</h1>
+        <div className='bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full flex flex-col'>
+            <div className='mx-auto w-full flex flex-row justify-center my-auto'>
+                <h1 className='text-rose-400 text-9xl opacity-50'>to do...</h1>
             </div>
         </div>
      );

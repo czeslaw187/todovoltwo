@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {useRouter} from 'next/router'
 import Record from '../component/Record';
-import Foot from '../component/Footer.js'
+import Footer from '../component/Footer.js'
 import {connect} from 'react-redux'
 import * as actionCreators from '../lib/actions.js'
 import {useSession} from 'next-auth/react'
@@ -33,7 +33,7 @@ function Home(props) {
                 ))}
           </div>
           <div className='lg:w-6/12 w-full mx-auto px-4 lg:px-0 text-sm lg:text-md'>
-           {(stat.length > 0) || (statCp.length > 0) ? <Foot left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
+           {(stat.length > 0) || (statCp.length > 0) ? <Footer left={stat.length} rd={props} clearInp={setInp} session={session}/> : null}
           </div>
       </div>
     )      
