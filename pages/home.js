@@ -28,16 +28,7 @@ function Home(props) {
     }
   },[])
   if (props.isSubscribed[0] < Date.now()) {
-    return(
-          <div className='bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full align-middle'>
-            <div className='flex flex-col mx-auto w-6/12 text-center'>
-              <p className='mx-auto mt-16 mb-10'>You have to subscribe to use this service</p>
-              <Link href='#'>
-                <a className='bg-lime-300 w-3/12 text-center px-2 py-1 rounded-md h-8 text-xl hover:bg-lime-600'>Subscribe</a>
-              </Link>
-            </div>
-          </div>
-        )
+    router.push('/subscribe')
   } 
     return (
       <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
