@@ -33,7 +33,7 @@ function Home(props) {
             <div className='flex flex-col mx-auto w-6/12 text-center'>
               <p className='mx-auto mt-16 mb-10'>You have to subscribe to use this service</p>
               <Link href='#'>
-                <a className='bg-lime-300 w-3/12 mx-auto rounded-md h-8 text-xl hover:bg-lime-600'>Subscribe</a>
+                <a className='bg-lime-300 w-3/12 text-center px-2 py-1 rounded-md h-8 text-xl hover:bg-lime-600'>Subscribe</a>
               </Link>
             </div>
           </div>
