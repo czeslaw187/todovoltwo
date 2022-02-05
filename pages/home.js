@@ -5,7 +5,6 @@ import Footer from '../component/Footer.js'
 import {connect} from 'react-redux'
 import * as actionCreators from '../lib/actions.js'
 import {useSession} from 'next-auth/react'
-import Link from 'next/link'
 
 function Home(props) {
   const router = useRouter()
