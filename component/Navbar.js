@@ -1,5 +1,4 @@
 import {useSession, signOut, signIn} from 'next-auth/react'
-// 07914253609 
 function NavBar() {
     const {data: session} = useSession()
     return ( 
@@ -7,7 +6,7 @@ function NavBar() {
             <a className='font-dancing text-gray-800 text-2xl' href="#">ToDo</a>  
             <ul className='w-full flex justify-end text-gray-100 text-md'>
                 <li className='list-none'>
-                    {session ? <a href="#" onClick={()=>signOut()}>Sign out</a> : <a className='nav-link' href="#" onClick={()=>signIn()}>Sign in</a>}
+                    {session ? <a className='text-xl font-lg hover:text-sky-300' href="#" onClick={()=>signOut()}>Sign out</a> : <a className='text-xl font-lg hover:text-sky-300' href='#' onClick={()=>signIn()}>Sign in</a>}
                 </li>
             </ul>
         </div>
