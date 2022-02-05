@@ -32,7 +32,7 @@ function Home(props) {
     return (
       <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
           <div className='p-4'>
-            <p>You have left: {daysLeft}</p>
+            <p>Subscription ends in {daysLeft} days</p>
           </div>
           <form className='mx-auto mb-20 lg:w-6/12 w-full h-12 px-4 lg:px-0' onSubmit={(e)=>{e.preventDefault(); props.insertData(inputTodo, session.session.user.email); setInputTodo('')}}>
             <input className='w-full inline-block h-full border-2 border-gray-400 my-5 rounded-md' type="text" onChange={(e)=>{setInputTodo(e.target.value)}} value={inputTodo} placeholder="What need to be done?"/>
