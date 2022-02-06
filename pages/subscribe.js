@@ -23,21 +23,22 @@ function Subscribe() {
       );
 }
 
-const createCheckOutSession = async () => {
+const createCheckOutSession = async (e) => {
+  e.preventDefault()
   const stripe = await stripePromise;
-  const checkoutSession = await axios.get('/api/create-stripe-session');
+  const checkoutSession = await axios.get(process.env.NEXT_PUBLIC_API_URL + '/api/create-stripe-session');
   const result = await stripe.redirectToCheckout({
     sessionId: checkoutSession.data.id,
   });
   if (result.error) {
     alert(result.error.message);
   } 
-};
+  axios.post(process.env.NEXT_PUBLIC_API_URL + '/api/subscribeUsers', {
+    name: session.session.user.name,
+    email: session.session.user.email
+  })
 
+};
 
 export default Subscribe;
 
-// axios.post('/api/subscribeUsers', {
-//   name: session.session.user.name,
-//   email: session.session.user.email
-// })

@@ -20,10 +20,9 @@ async function CreateStripeSession(req, res) {
     payment_method_types: ['card'],
     line_items: [transformedItem],
     mode: 'payment',
-    success_url: redirectURL + '?status=success',
+    success_url: 'http://localhost:3000/success' + '?status=success',
     cancel_url: redirectURL + '?status=cancel',
   });
-  console.log(session, 'stripe')
 
   res.json({ id: session.id });
 }
