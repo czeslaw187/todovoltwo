@@ -20,7 +20,7 @@ async function CreateStripeSession(req, res) {
     payment_method_types: ['card'],
     line_items: [transformedItem],
     mode: 'payment',
-    success_url: NEXT_PUBLIC_API_URL + '/success?status=success',
+    success_url: process.env.NEXT_PUBLIC_API_URL + '/success?status=success',
     cancel_url: redirectURL + '?status=cancel',
   });
 
