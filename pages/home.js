@@ -18,22 +18,10 @@ function Home(props) {
   useEffect(()=>{
     if (!session) {
       router.push('/')
+    } else if (session && (stat.length <= 0)) {
+      props.loadData(session)
     }    
   },[])
-
-  useEffect(()=>{
-    if (session && (stat.length <= 0)) {
-      props.loadData(session)
-    }
-  },[])
-
-  if (status === 'loading') {
-    return (
-      <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
-        <p className='text-center text-lime-700 m-auto text-2xl'>Loading...</p>
-      </div>
-    )
-  }
 
   if (props.isSubscribed[0] < Date.now()) {
     router.push('/subscribe')
@@ -48,11 +36,11 @@ function Home(props) {
           </form>
           <div className='lg:w-6/12 w-full mx-auto px-4 lg:px-0'>
           {stat.map((el)=>(
-                    <Record key={el.id} record={el} rd={props} session={session}/>
+                    <Record key={el.todo_id.toString()} record={el} rd={props} session={session}/>
                 ))}
           </div>
           <div className='lg:w-6/12 w-full mx-auto px-4 lg:px-0 text-sm lg:text-md'>
-           {(stat.length > 0) || (statCp.length > 0) ? <Footer left={stat.length} rd={props} clearInput={setInputTodo} session={session}/> : null}
+           {(stat.length > 0) || (statCp.length > 0) ? <Footer key={'footer'} left={stat.length} rd={props} clearInput={setInputTodo} session={session}/> : null}
           </div>
       </div>
     )      
@@ -84,3 +72,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
+
+{/* <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
+  <p className='text-center text-lime-700 m-auto text-2xl'>Loading...</p>
+</div> */}

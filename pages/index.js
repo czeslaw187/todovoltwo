@@ -9,9 +9,7 @@ function Login() {
         if (session) {
             router.push('/home')
         }
-    },[session, router])
-    let subscription = Date.now() + 30*86400000
-    console.log(subscription)
+    },[session])
     return ( 
         <div className='bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full flex flex-col'>
             <div className='mx-auto w-full flex flex-row justify-center my-auto'>
