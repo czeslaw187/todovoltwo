@@ -20,7 +20,6 @@ async function handler(req, res) {
             const subscriberEmail = event.data.object.charges.data[0].billing_details.email
             const subscriberName = event.data.object.charges.data[0].billing_details.name
             axios.post(process.env.NEXT_PUBLIC_API_URL + '/api/subscribeUser',{
-                name: subscriberName,
                 email: subscriberEmail
             })
         } else {
