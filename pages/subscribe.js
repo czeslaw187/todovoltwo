@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import {useRouter} from 'next/router'
 import {useSession} from 'next-auth/react'
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
@@ -8,7 +7,6 @@ const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = loadStripe(publishableKey);
 
 function Subscribe() {
-    const router = useRouter()
     const {data: session} = useSession()
     const createCheckOutSession = async (e) => {
       e.preventDefault()
