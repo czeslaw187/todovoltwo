@@ -19,7 +19,7 @@ function Record({record, rd, session}) {
                                
             </div>            
             <div className='opacity-0 hover:opacity-100 w-full flex justify-end'>
-                <button className='text-gray-400 ml-auto text-xl mr-2' onClick={()=>{setDel(true)}}>X</button>
+                <button className='text-gray-400 ml-auto text-xl mr-5' onClick={()=>{setDel(true)}}>X</button>
             </div>  
         </div>
      );
