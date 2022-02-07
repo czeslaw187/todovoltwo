@@ -2,7 +2,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 async function CreateStripeSession(req, res) {
 
-  const redirectURL = 'https://todovoltwo.vercel.app'
   const {email} = req.body
 
   const transformedItem = {
@@ -22,7 +21,7 @@ async function CreateStripeSession(req, res) {
     line_items: [transformedItem],
     mode: 'payment',
     success_url: process.env.NEXT_PUBLIC_API_URL + '/success?status=success',
-    cancel_url: redirectURL + '?status=cancel',
+    cancel_url: process.env.NEXT_PUBLIC_API_URL + '?status=cancel',
     customer_email: email
   });
 

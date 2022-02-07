@@ -22,7 +22,7 @@ function Home(props) {
   },[])
 
   useEffect(()=>{
-    if (session) {
+    if (session && (stat.length <= 0)) {
       props.loadData(session)
     }
   },[])
