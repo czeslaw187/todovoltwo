@@ -26,6 +26,15 @@ function Home(props) {
       props.loadData(session)
     }
   },[])
+
+  if (status === 'loading') {
+    return (
+      <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
+        <p className='text-center text-lime-700 m-auto text-2xl'>Loading...</p>
+      </div>
+    )
+  }
+
   if (props.isSubscribed[0] < Date.now()) {
     router.push('/subscribe')
   } 
