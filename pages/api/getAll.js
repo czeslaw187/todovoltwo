@@ -15,7 +15,7 @@ export default async function getAll(req, res) {
         userData = await sql_query(`
             SELECT subscription FROM users WHERE email=?
         `,[email])
-        
+        console.log(userData[0].subscription, 'getAll')
         let newUser = await sql_query(`
             SELECT todos.todo_id, todos.content, todos.isActive, todos.email FROM todos LEFT JOIN users ON users.email = todos.email WHERE users.email = ?
             `, [email]) 
