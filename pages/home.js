@@ -11,7 +11,7 @@ function Home(props) {
   const {data: session, status} = useSession()
   const [inputTodo, setInputTodo] = useState('')
   let stat = props.todos
-  let statCp = props.todosCp
+  let statCp = props.todosCp  
   stat =  stat.length > 0 ? stat : []
   statCp = statCp.length > 0 ? statCp : []
   let daysLeft = Math.floor((props.isSubscribed[0] - Date.now()) / 86400000)
@@ -21,29 +21,31 @@ function Home(props) {
     } else if (session && (stat.length <= 0)) {
       props.loadData(session)
     }    
+    
   },[])
 
-  if (props.isSubscribed[0] < Date.now()) {
+  if ((props.isSubscribed[0] < Date.now())) {
     router.push('/subscribe')
   } 
-    return (
-      <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
-          <div className='p-4'>
-            <p>Subscription ends in {daysLeft} days</p>
-          </div>
-          <form className='mx-auto mb-20 sm:w-6/12 w-full h-12 px-4 lg:px-0' onSubmit={(e)=>{e.preventDefault(); props.insertData(inputTodo, session.session.user.email); setInputTodo('')}}>
-            <input className='w-full inline-block h-full border-2 border-gray-400 my-5 rounded-md' type="text" onChange={(e)=>{setInputTodo(e.target.value)}} value={inputTodo} placeholder="What need to be done?"/>
-          </form>
-          <div className='sm:w-6/12 w-full mx-auto px-4 lg:px-0'>
-          {stat.map((el)=>(
-                    <Record key={el.todo_id.toString()} record={el} rd={props} session={session}/>
-                ))}
-          </div>
-          <div className='sm:w-6/12 w-full mx-auto px-4 lg:px-0 text-sm lg:text-md'>
-           {(stat.length > 0) || (statCp.length > 0) ? <Footer key={'footer'} left={stat.length} rd={props} clearInput={setInputTodo} session={session}/> : null}
-          </div>
-      </div>
-    )      
+
+  return (
+    <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
+        <div className='p-4'>
+          <p>Subscription ends in {daysLeft} days</p>
+        </div>
+        <form className='mx-auto mb-20 sm:w-6/12 w-full h-12 px-4 lg:px-0' onSubmit={(e)=>{e.preventDefault(); props.insertData(inputTodo, session.session.user.email); setInputTodo('')}}>
+          <input className='w-full inline-block h-full border-2 border-gray-400 my-5 rounded-md' type="text" onChange={(e)=>{setInputTodo(e.target.value)}} value={inputTodo} placeholder="What need to be done?"/>
+        </form>
+        <div className='sm:w-6/12 w-full mx-auto px-4 lg:px-0'>
+        {stat.map((el)=>(
+                  <Record key={el.todo_id.toString()} record={el} rd={props} session={session}/>
+              ))}
+        </div>
+        <div className='sm:w-6/12 w-full mx-auto px-4 lg:px-0 text-sm lg:text-md'>
+          {(stat.length > 0) || (statCp.length > 0) ? <Footer key={'footer'} left={stat.length} rd={props} clearInput={setInputTodo} session={session}/> : null}
+        </div>
+    </div>
+  )      
     
   
 }
@@ -72,7 +74,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
-
-{/* <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
-  <p className='text-center text-lime-700 m-auto text-2xl'>Loading...</p>
-</div> */}
