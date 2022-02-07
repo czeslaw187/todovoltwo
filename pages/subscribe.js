@@ -10,6 +10,17 @@ const stripePromise = loadStripe(publishableKey);
 function Subscribe() {
     const router = useRouter()
     const {data: session} = useSession()
+    const createCheckOutSession = async (e) => {
+      e.preventDefault()
+      const stripe = await stripePromise;
+      const checkoutSession = await axios.post(process.env.NEXT_PUBLIC_API_URL + '/api/create-stripe-session',{email:session.session.user.email});
+      const result = await stripe.redirectToCheckout({
+        sessionId: checkoutSession.data.id,
+      });
+      if (result.error) {
+        alert(result.error.message);
+      } 
+    };
     return(
         <div className='bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full align-middle'>
           <div className='flex flex-col mx-auto w-6/12 text-center'>
@@ -22,18 +33,6 @@ function Subscribe() {
         </div>
       );
 }
-
-const createCheckOutSession = async (e) => {
-  e.preventDefault()
-  const stripe = await stripePromise;
-  const checkoutSession = await axios.post(process.env.NEXT_PUBLIC_API_URL + '/api/create-stripe-session',{email:session.session.user.email});
-  const result = await stripe.redirectToCheckout({
-    sessionId: checkoutSession.data.id,
-  });
-  if (result.error) {
-    alert(result.error.message);
-  } 
-};
 
 export default Subscribe;
 
