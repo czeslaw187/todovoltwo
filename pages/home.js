@@ -19,7 +19,7 @@ function Home(props) {
     if (props.isSubscribed[0] < Date.now()) {
       router.push('/subscribe')
     } 
-  },[])
+  },[props.isSubscribed[0]])
   useEffect(()=>{
     if (!session) {
       router.push('/')
