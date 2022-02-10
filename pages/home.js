@@ -20,12 +20,12 @@ function Home(props) {
       router.push('/')
     } else if (session && (stat.length <= 0)) {
       props.loadData(session)
+    } else if (props.isSubscribed[0] < Date.now()) {
+      router.push('/subscribe')
     }        
   },[])
 
-  if (props.isSubscribed[0] < Date.now()) {
-    router.push('/subscribe')
-  } 
+  
 
   return (
     <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
