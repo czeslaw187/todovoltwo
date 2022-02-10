@@ -20,11 +20,10 @@ function Home(props) {
       router.push('/')
     } else if (session && (stat.length <= 0)) {
       props.loadData(session)
-    }    
-    
+    }        
   },[])
 
-  if ((props.isSubscribed[0] < Date.now())) {
+  if (parseInt(props.isSubscribed[0]) < Date.now()) {
     router.push('/subscribe')
   } 
 
