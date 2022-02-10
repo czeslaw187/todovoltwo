@@ -16,12 +16,15 @@ function Home(props) {
   statCp = statCp.length > 0 ? statCp : []
   let daysLeft = Math.floor((props.isSubscribed[0] - Date.now()) / 86400000)
   useEffect(()=>{
+    if (props.isSubscribed[0] < Date.now()) {
+      router.push('/subscribe')
+    } 
+  },[])
+  useEffect(()=>{
     if (!session) {
       router.push('/')
     } else if (session && (stat.length <= 0)) {
       props.loadData(session)
-    } else if (props.isSubscribed[0] < Date.now()) {
-      router.push('/subscribe')
     }        
   },[])
 
