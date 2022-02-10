@@ -23,7 +23,7 @@ function Home(props) {
     }        
   },[])
 
-  if (parseInt(props.isSubscribed[0]) < Date.now()) {
+  if (props.isSubscribed[0] < Date.now()) {
     router.push('/subscribe')
   } 
 
