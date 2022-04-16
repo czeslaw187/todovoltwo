@@ -28,8 +28,6 @@ function Home(props) {
     }        
   },[])
 
-  
-
   return (
     <div className='flex-col bg-gradient-to-bl from-indigo-100 to-indigo-400 h-full'>
         <div className='p-4'>
