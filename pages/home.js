@@ -18,6 +18,10 @@ function Home(props) {
   let daysLeft = Math.floor((props.isSubscribed[0] - Date.now()) / 86400000)
 
   useEffect(()=>{
+    router.push('/home')
+  },[props.isSubscribed])
+
+  useEffect(()=>{
     if (!session) {
       router.push('/')
     } else if (session && (stat.length <= 0)) {
