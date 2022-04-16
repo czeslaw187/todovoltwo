@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react';
 function Record({record, rd, session}) {
     const [del,setDel] = useState(0)
     const [visibility,setVisibility] = useState(true)
+    
     useEffect(()=>{
         if (del) {
             rd.removeData(record.todo_id, session.session.user.email)
         }
     },[del])
+
     return ( 
         <div className='flex flex-row align-middle justify-between bg-lime-100 rounded-md mx-auto w-full h-14 mb-1'>
             <div className={checkStyle.round}>
