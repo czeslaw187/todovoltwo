@@ -1,8 +1,5 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
-import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
-import axios from 'axios'
-
 
 export default NextAuth({
     providers: [

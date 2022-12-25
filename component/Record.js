@@ -1,4 +1,3 @@
-import todoStyle from '../styles/Todo.module.css'
 import checkStyle from '../styles/Checkbox.module.css'
 import { useEffect, useState } from 'react';
 
